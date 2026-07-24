@@ -1,0 +1,9 @@
+**/node_modules
+**/.venv
+**/dist
+**/dist-ssr
+**/__pycache__
+**/*.pyc
+.git
+.claude
+backend/files/embeddings_model.keras

@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Trained model / data artifacts (regenerate via embeddings/*.ipynb)
+website/backend/files/*
+!website/backend/files/.gitkeep
+
+# Source dataset / derived intermediates (see embeddings/README.md)
+embeddings/data/
+embeddings/groups.csv
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*

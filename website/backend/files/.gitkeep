@@ -1,0 +1,3 @@
+Place the generated embedding_weights.npy, token_to_id.pkl, and id_to_token.pkl here.
+Generate them by running the notebooks in embeddings/, in order:
+preprocessing.ipynb -> embeddings.ipynb -> extract-embeddings.ipynb

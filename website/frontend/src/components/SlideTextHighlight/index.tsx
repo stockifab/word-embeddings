@@ -1,0 +1,1 @@
+export { SlideTextHighlight } from "./SlideTextHighlight";

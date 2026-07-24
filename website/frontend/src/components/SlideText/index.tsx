@@ -1,0 +1,1 @@
+export { SlideText } from "./SlideText";

@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --accent-color: #ff00d0;
+  --accent-text-gradient: linear-gradient(
+    45deg,
+    #d316fe 0%,
+    var(--accent-color) 100%
+  );
+
+  --accent-50: #fef1fb;
+  --accent-100: #fde2f8;
+  --accent-200: #fcc0f1;
+  --accent-300: #fa93e8;
+  --accent-400: #fa51db;
+  --accent-500: var(--accent-color);
+  --accent-600: #d600af;
+  --accent-700: #b30092;
+  --accent-800: #900476;
+  --accent-900: #740660;
+  --accent-950: #49043c;
+}
+
+@theme {
+  --color-accent: var(--accent-500);
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+  --color-accent-950: var(--accent-950);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.text-gradient-accent {
+  background-image: var(--accent-text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

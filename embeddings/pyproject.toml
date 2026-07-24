@@ -1,0 +1,17 @@
+[project]
+name = "v2"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.0",
+    "numpy>=2.5.1",
+    "pandas>=3.0.3",
+    "pyarrow>=24.0.0",
+    "pydot>=4.0.1",
+    "regex>=2026.6.28",
+    "scikit-learn>=1.9.0",
+    "seaborn>=0.13.2",
+    "tensorflow>=2.21.0",
+]
