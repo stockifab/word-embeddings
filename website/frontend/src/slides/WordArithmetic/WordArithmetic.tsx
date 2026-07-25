@@ -12,7 +12,7 @@ import { Pencil } from "lucide-react";
 
 const tryItOutExamples = [
   { word1: "Woman", word2: "Man", word3: "King" },
-  { word1: "Better", word2: "Good", word3: "Bad" },
+  { word1: "Dog", word2: "Bark", word3: "Meow" },
   { word1: "Red", word2: "Apple", word3: "Pumpkin" },
 ];
 
