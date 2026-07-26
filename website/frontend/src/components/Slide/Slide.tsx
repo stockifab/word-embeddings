@@ -20,7 +20,10 @@ export function Slide({
   });
 
   return (
-    <div className={`h-screen w-screen ${className}`} {...props}>
+    <div
+      className={`relative min-h-[100dvh] w-full overflow-x-hidden ${className}`}
+      {...props}
+    >
       {interactive && (
         <div ref={bgRef} className="absolute inset-0 -z-10 overflow-hidden">
           <div

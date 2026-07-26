@@ -64,6 +64,11 @@ export function WordArithmetic(_: SlideProps) {
   const bestScore = sortedAnalogy?.[0]?.[1];
   const alternatives = sortedAnalogy?.slice(1, 6);
 
+  const inputClass = cx(
+    "h-14 w-full rounded-full border-2 border-gray-200 px-6 text-lg outline-0 shadow-lg transition-all focus:border-accent focus:shadow-accent-200 sm:h-16 sm:px-8 sm:text-2xl md:h-20 md:text-3xl md:w-auto md:min-w-0 md:flex-1",
+    isError && "text-red-600 underline",
+  );
+
   useGSAP(() => {
     if (
       !title.current ||
@@ -175,21 +180,25 @@ export function WordArithmetic(_: SlideProps) {
   }, [alternatives?.map(([w]) => w).join(",")]);
 
   return (
-    <Slide className="flex flex-col items-center justify-around" interactive>
-      <div ref={titleContinaer} className="absolute top-24 -translate-y-1/2">
-        <SlideText ref={title} className="mt-10">
-          Word Arithmetic
-        </SlideText>
-        <p ref={subTitle} className="text-center mt-4 text-2xl text-gray-500">
+    <Slide
+      className="flex flex-col items-center gap-8 px-4 py-16 pb-28 sm:py-20"
+      interactive
+    >
+      <div ref={titleContinaer} className="w-full max-w-4xl">
+        <SlideText ref={title}>Word Arithmetic</SlideText>
+        <p
+          ref={subTitle}
+          className="mt-4 text-center text-base text-gray-500 sm:text-xl md:text-2xl"
+        >
           See how words relate to each other
         </p>
       </div>
 
       <div
-        className="shadow-2xl w-min flex flex-col items-center justify-center p-15 min-h-3/5 rounded-2xl border-2 border-gray-200 bg-white gap-14"
+        className="flex w-full max-w-4xl flex-col items-center justify-center gap-10 rounded-2xl border-2 border-gray-200 bg-white p-6 shadow-2xl sm:gap-14 sm:p-10 lg:p-15"
         ref={interactiveContainer}
       >
-        <p className="text-gray-400 text-center max-w-2xl">
+        <p className="max-w-2xl text-center text-sm text-gray-400 sm:text-base">
           Word 1 relates to word 2 the same way the answer relates to word 3 —
           e.g. <span className="text-gray-600 font-medium">Woman</span> is to{" "}
           <span className="text-gray-600 font-medium">Man</span> as{" "}
@@ -197,40 +206,31 @@ export function WordArithmetic(_: SlideProps) {
           <span className="text-gray-600 font-medium">King</span>.
         </p>
 
-        <div className="flex items-center gap-8">
+        <div className="flex w-full flex-col items-center gap-4 md:flex-row md:gap-4 lg:gap-6">
           <input
             ref={word1Input}
-            className={cx(
-              "w-100 h-20 border-2 rounded-full p-10 text-3xl outline-0 border-gray-200 focus:border-accent shadow-lg focus:shadow-accent-200 transition-all",
-              isError && "text-red-600 underline",
-            )}
+            className={inputClass}
             placeholder="Woman"
             value={words.word1}
             onChange={(e) => setWords({ ...words, word1: e.target.value })}
           />
-          <p className="text-5xl">-</p>
+          <p className="text-3xl sm:text-5xl">-</p>
           <input
-            className={cx(
-              "w-100 h-20 border-2 rounded-full p-10 text-3xl outline-0 border-gray-200 focus:border-accent shadow-lg focus:shadow-accent-200 transition-all",
-              isError && "text-red-600 underline",
-            )}
+            className={inputClass}
             placeholder="Man"
             value={words.word2}
             onChange={(e) => setWords({ ...words, word2: e.target.value })}
           />
-          <p className="text-5xl">+</p>
+          <p className="text-3xl sm:text-5xl">+</p>
           <input
-            className={cx(
-              "w-100 h-20 border-2 rounded-full p-10 text-3xl outline-0 border-gray-200 focus:border-accent shadow-lg focus:shadow-accent-200 transition-all",
-              isError && "text-red-600 underline",
-            )}
+            className={inputClass}
             placeholder="King"
             value={words.word3}
             onChange={(e) => setWords({ ...words, word3: e.target.value })}
           />
         </div>
 
-        <div className="flex gap-4 items-center justify-center -mt-6">
+        <div className="-mt-2 flex flex-wrap items-center justify-center gap-3 sm:-mt-6">
           <p>Try it:</p>
           {tryItOutExamples.map((example) => (
             <button
@@ -249,21 +249,21 @@ export function WordArithmetic(_: SlideProps) {
           </button>
         </div>
 
-        <div className="flex flex-col items-center gap-4 mt-4">
-          <div className="flex items-center relative">
-            <p className="text-5xl absolute -left-8 -translate-x-full">=</p>
+        <div className="mt-4 flex w-full flex-col items-center gap-4">
+          <div className="flex w-full max-w-md items-center gap-3 sm:gap-4">
+            <p className="shrink-0 text-3xl sm:text-5xl">=</p>
             <p
               className={cx(
-                "w-100 h-20 border-2 rounded-full pl-10 pr-4 text-3xl outline-0 border-accent-300 shadow-lg transition-all flex items-center justify-between gap-3 bg-accent-50 font-semibold text-accent-950",
+                "flex h-14 flex-1 items-center justify-between gap-3 rounded-full border-2 border-accent-300 bg-accent-50 pl-6 pr-3 text-lg font-semibold text-accent-950 shadow-lg outline-0 transition-all sm:h-16 sm:pl-8 sm:text-2xl md:h-20 md:text-3xl",
               )}
             >
-              <span ref={resultWord} className="inline-block">
+              <span ref={resultWord} className="inline-block truncate">
                 {bestAnalogy}
               </span>
               {bestScore !== undefined && (
                 <span
                   ref={resultScore}
-                  className="text-sm bg-accent-100 text-accent-700 rounded-full px-3 py-1.5 font-medium inline-block"
+                  className="inline-block shrink-0 rounded-full bg-accent-100 px-3 py-1.5 text-sm font-medium text-accent-700"
                 >
                   {(Math.round(bestScore * 1000) / 10).toFixed(1)}%
                 </span>
@@ -273,9 +273,9 @@ export function WordArithmetic(_: SlideProps) {
           {alternatives && alternatives.length > 0 && (
             <div
               ref={alternativesContainer}
-              className="flex items-center gap-2"
+              className="flex flex-wrap items-center justify-center gap-2"
             >
-              <p className="text-xs text-gray-400 mr-1">also close:</p>
+              <p className="mr-1 text-xs text-gray-400">also close:</p>
               {alternatives.map(([w, prob]) => (
                 <div
                   key={w}
@@ -291,7 +291,7 @@ export function WordArithmetic(_: SlideProps) {
           )}
         </div>
 
-        <p className="mt-auto text-lg text-gray-400 text-center max-w-xl">
+        <p className="max-w-xl text-center text-sm text-gray-400 sm:text-lg">
           Other relationships to try: plurals (Cat → Cats), verb tense (Walk →
           Walked), comparatives (Good → Better), or country ↔ capital pairs
           (France → Paris).

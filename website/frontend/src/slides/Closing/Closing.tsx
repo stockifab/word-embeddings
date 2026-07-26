@@ -47,14 +47,14 @@ export function Closing({ slideIndex }: SlideProps) {
   }, [slideIndex]);
 
   return (
-    <Slide className="flex flex-col items-center justify-center gap-10">
+    <Slide className="flex flex-col items-center justify-center gap-6 px-6 pb-28 sm:gap-10">
       <SlideText key={slideIndex} ref={textContainer}>
         These are only some of the things <br/>you can do with word embeddings.
       </SlideText>
       <p
         key={`${slideIndex}-subtitle`}
         ref={subTitle}
-        className="text-center text-2xl text-gray-500"
+        className="mx-auto max-w-2xl text-center text-lg text-gray-500 sm:text-xl md:text-2xl"
       >
         They also power <SlideTextHighlight>search engines</SlideTextHighlight>,{" "}
         <SlideTextHighlight>recommendation systems</SlideTextHighlight>,{" "}

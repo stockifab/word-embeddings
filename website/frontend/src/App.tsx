@@ -55,10 +55,10 @@ export function App() {
   return (
     <>
       <CurrentSlide slideIndex={slideIndex} />
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-5">
+      <div className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-3 sm:bottom-10 sm:gap-5 md:bottom-16">
         {canGoBack && (
           <button
-            className="cursor-pointer px-8 py-3 text-lg text-gray-500 hover:underline transition-colors"
+            className="cursor-pointer px-5 py-3 text-base text-gray-500 transition-colors hover:underline sm:px-8 sm:text-lg"
             onClick={() => setSlideIndex((curr) => curr - 1)}
           >
             Go back
@@ -67,7 +67,7 @@ export function App() {
         {canContinue && (
           <button
             ref={buttonRef}
-            className="cursor-pointer flex items-center gap-2 rounded-full bg-accent px-8 py-3 text-lg font-semibold text-white transition-colors hover:bg-accent-600 active:bg-accent-700"
+            className="flex cursor-pointer items-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-semibold text-white shadow-lg transition-colors hover:bg-accent-600 active:bg-accent-700 sm:px-8 sm:text-lg"
             onClick={() => setSlideIndex((curr) => curr + 1)}
           >
             Continue

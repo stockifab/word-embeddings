@@ -36,13 +36,22 @@
   --color-accent-950: var(--accent-950);
 }
 
+html,
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-.text-gradient-accent {
+/*
+ * The gradient is clipped to the text via background-clip. GSAP's SplitText
+ * re-wraps each word in child elements that inherit `color: transparent` but
+ * not the background, which would render them invisible — so re-apply the
+ * gradient to any split children as well.
+ */
+.text-gradient-accent,
+.text-gradient-accent * {
   background-image: var(--accent-text-gradient);
   background-clip: text;
   -webkit-background-clip: text;

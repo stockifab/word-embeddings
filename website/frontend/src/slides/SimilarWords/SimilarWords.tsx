@@ -122,26 +122,32 @@ export function SimilarWords(_: SlideProps) {
   );
 
   return (
-    <Slide className="flex flex-col items-center justify-around" interactive>
-      <div ref={titleContinaer} className="absolute top-24 -translate-y-1/2">
-        <SlideText ref={title} className="mt-10">
+    <Slide
+      className="flex flex-col items-center gap-8 px-4 py-16 pb-28 sm:py-20"
+      interactive
+    >
+      <div ref={titleContinaer} className="w-full max-w-4xl">
+        <SlideText ref={title}>
           Similar words have similar embeddings
         </SlideText>
-        <p ref={subTitle} className="text-center mt-4 text-2xl text-gray-500">
+        <p
+          ref={subTitle}
+          className="mx-auto mt-4 max-w-2xl text-center text-base text-gray-500 sm:text-xl md:text-2xl"
+        >
           Since embeddings are just numbers, we can{" "}
-          <SlideTextHighlight>measure how related</SlideTextHighlight> two words are,
-          <br /> by calculating the angle between the embedding vectors.
+          <SlideTextHighlight>measure how related</SlideTextHighlight> two words
+          are, by calculating the angle between the embedding vectors.
         </p>
       </div>
 
       <div
-        className="shadow-2xl w-2/3 min-w-min flex flex-col items-center p-15 min-h-3/5 rounded-2xl border-2 border-gray-200 bg-white"
+        className="flex w-full max-w-3xl flex-col items-center rounded-2xl border-2 border-gray-200 bg-white p-6 shadow-2xl sm:p-10 lg:p-15"
         ref={interactiveContainer}
       >
         <input
           ref={wordInput}
           className={cx(
-            "w-150 h-20 border-2 rounded-full p-10 text-3xl outline-0 border-gray-200 focus:border-accent shadow-lg focus:shadow-accent-200 transition-all",
+            "h-14 w-full max-w-xl rounded-full border-2 border-gray-200 px-6 text-lg outline-0 shadow-lg transition-all focus:border-accent focus:shadow-accent-200 sm:h-16 sm:px-8 sm:text-2xl md:h-20 md:text-3xl",
             isError && "text-red-600 underline",
           )}
           placeholder="Enter a word"
@@ -149,7 +155,7 @@ export function SimilarWords(_: SlideProps) {
           onChange={(e) => setWord(e.target.value)}
         />
 
-        <div className="flex gap-4 items-center justify-center mt-5">
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
           <p>Try it:</p>
           {tryItOutWords.map((w) => (
             <button
@@ -168,7 +174,10 @@ export function SimilarWords(_: SlideProps) {
           </button>
         </div>
 
-        <div className="my-auto flex flex-col gap-1" ref={wordsContainer}>
+        <div
+          className="mt-10 flex w-full max-w-2xl flex-col gap-1"
+          ref={wordsContainer}
+        >
           {(() => {
             if (!closeWords) return;
             const sorted = (closeWords as [string, number][])?.toSorted(
@@ -178,31 +187,36 @@ export function SimilarWords(_: SlideProps) {
             const minProb = sorted?.[sorted.length - 1]?.[1] ?? 0;
             return (
               <>
-                <div className="flex w-200 items-center gap-5">
-                  <SlideTextHighlight className="ml-auto text-xl mb-4">
+                <div className="flex w-full items-center gap-3 sm:gap-5">
+                  <SlideTextHighlight className="mb-4 ml-auto text-base sm:text-xl">
                     Similarity
                   </SlideTextHighlight>
                 </div>
 
                 {sorted?.map(([w, prob], i) => (
-                  <div className="flex w-200 items-center gap-5" key={i}>
+                  <div
+                    className="flex w-full items-center gap-3 sm:gap-5"
+                    key={i}
+                  >
                     <p
                       className={cx(
-                        "word-label text-xl",
+                        "word-label text-base sm:text-xl",
                         isError && "text-gray-200",
-                        "min-w-50",
+                        "min-w-24 shrink-0 truncate sm:min-w-40",
                       )}
                     >
                       {w}
                     </p>
-                    <div
-                      className="h-4 bg-accent rounded-full bar transition-all"
-                      style={{
-                        width: `${((prob - minProb) / (maxProb - minProb)) * 90 + 10}%`,
-                        filter: `saturate(${((prob - minProb) / (maxProb - minProb)) * 0.9 + 0.1})`,
-                      }}
-                    />
-                    <p>
+                    <div className="flex-1">
+                      <div
+                        className="bar h-3 rounded-full bg-accent transition-all sm:h-4"
+                        style={{
+                          width: `${((prob - minProb) / (maxProb - minProb)) * 90 + 10}%`,
+                          filter: `saturate(${((prob - minProb) / (maxProb - minProb)) * 0.9 + 0.1})`,
+                        }}
+                      />
+                    </div>
+                    <p className="shrink-0 text-sm sm:text-base">
                       {(Math.round((prob as number) * 1000) / 10).toFixed(1)}%
                     </p>
                   </div>
@@ -211,7 +225,7 @@ export function SimilarWords(_: SlideProps) {
             );
           })()}
         </div>
-        <p className="mt-auto text-gray-400">
+        <p className="mt-10 text-center text-sm text-gray-400 sm:text-base">
           The higher the similarity, the more the word is related to the word
           you entered
         </p>

@@ -38,7 +38,7 @@ export function NoDefinitions({ slideIndex }: SlideProps) {
   }, [slideIndex]);
 
   return (
-    <Slide className="flex flex-col items-center justify-center gap-10">
+    <Slide className="flex flex-col items-center justify-center gap-10 px-6 pb-28">
       <SlideText key={slideIndex} ref={textContainer}>
         {text[slideIndex - 3]}
       </SlideText>

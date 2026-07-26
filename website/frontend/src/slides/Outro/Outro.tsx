@@ -87,7 +87,7 @@ export function Outro({ slideIndex }: SlideProps) {
   );
 
   return (
-    <Slide className="flex flex-col items-center justify-center gap-10">
+    <Slide className="flex flex-col items-center justify-center gap-6 px-6 pb-28 sm:gap-10">
       <SlideText key={slideIndex} ref={textContainer}>
         Curious how it all <br />
         works under the hood?
@@ -95,7 +95,7 @@ export function Outro({ slideIndex }: SlideProps) {
       <p
         key={`${slideIndex}-subtitle`}
         ref={subTitle}
-        className="text-center text-2xl text-gray-500"
+        className="mx-auto max-w-2xl text-center text-lg text-gray-500 sm:text-xl md:text-2xl"
       >
         This entire project - from{" "}
         <SlideTextHighlight>training the embeddings</SlideTextHighlight> to{" "}
