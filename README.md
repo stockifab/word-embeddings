@@ -46,3 +46,11 @@ docker run -p 8000:8000 word-embeddings
 ```
 
 Note: the Docker image does not include `website/backend/files/*` — mount or copy the generated embedding files in separately.
+
+# AI Usage Declaration
+
+AI was used to:
+- write this README
+- make the demo website responsive because I forgot to think about smaller screens :/
+- certain texts for the demo website, to help explain word embeddings
+- assist with conceptual questions about word embeddings
